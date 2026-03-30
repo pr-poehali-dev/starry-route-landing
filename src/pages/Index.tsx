@@ -47,12 +47,6 @@ const HOW_IT_WORKS = [
   { icon: 'Package', num: '04', title: 'Получите шедевр', desc: 'Доставим печатную версию или пришлём цифровой файл.' },
 ];
 
-const REVIEWS = [
-  { name: 'Анна М.', city: 'Москва', text: 'Заказала после Московского марафона — картина превзошла все ожидания. Теперь это гордость моей гостиной.', rating: 5 },
-  { name: 'Дмитрий К.', city: 'Санкт-Петербург', text: 'Подарил жене на годовщину — она пробежала первые 5 км. Слёзы на глазах! Спасибо за такую идею.', rating: 5 },
-  { name: 'Юлия В.', city: 'Казань', text: 'Стиль "Космический фиолетовый" — это что-то невероятное. Смотрится как настоящее искусство.', rating: 5 },
-];
-
 const FAQS = [
   { q: 'Сколько времени занимает создание картины?', a: 'Обычно 3–5 рабочих дней. После готовности мы свяжемся с вами.' },
   { q: 'В каком формате доставляется картина?', a: 'Доступны цифровой файл высокого разрешения и печатная версия с доставкой по России.' },
@@ -411,32 +405,22 @@ export default function Index() {
             transform: heroVisible ? 'translateY(0)' : 'translateY(30px)',
             transition: 'opacity 0.8s ease, transform 0.8s ease',
           }}>
-            <p className="font-body text-blue-400/60 text-xs uppercase tracking-[0.3em] mb-6">
+            <p className="font-body text-blue-400/50 text-xs uppercase tracking-[0.35em] mb-8 font-light">
               Персонализированные картины
             </p>
-            <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-light text-white leading-[1.05] mb-6">
-              Создай свою<br />
-              <span className="text-violet-glow glow-text-violet italic">уникальную картину</span><br />
-              маршрута забега
+            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-light text-white leading-[1.1] mb-6 tracking-tight">
+              Создай свою уникальную<br />
+              <span className="text-violet-glow italic font-light">картину маршрута забега</span>
             </h1>
-            <p className="font-body text-slate-400 text-lg md:text-xl mb-12 max-w-lg mx-auto leading-relaxed">
+            <p className="font-body text-slate-500 text-base md:text-lg mb-12 max-w-md mx-auto leading-relaxed font-light">
               Преврати свой забег в произведение искусства
             </p>
             <button
               onClick={startJourney}
-              className="btn-neon px-12 py-4 rounded-full font-body text-base tracking-wide"
+              className="btn-neon px-10 py-3.5 rounded-sm font-body text-sm tracking-widest uppercase"
             >
               Создать картину
             </button>
-
-            <div className="mt-24 flex gap-12 md:gap-20 justify-center">
-              {[['3D', 'маршрут'], ['3', 'стиля'], ['💙', 'с любовью']].map(([num, label]) => (
-                <div key={label}>
-                  <div className="font-display text-3xl text-blue-400 mb-1">{num}</div>
-                  <div className="font-body text-xs text-slate-500 uppercase tracking-wider">{label}</div>
-                </div>
-              ))}
-            </div>
           </div>
         )}
 
@@ -490,9 +474,8 @@ export default function Index() {
       <section id="gallery" className="relative z-10 px-6 md:px-12 py-24">
         <FadeSection>
           <div className="text-center mb-16">
-            <p className="font-body text-blue-400/60 text-xs uppercase tracking-[0.3em] mb-4">Наши работы</p>
-            <h2 className="font-display text-5xl md:text-6xl font-light text-white">Примеры картин</h2>
-            <div className="section-divider mt-6" />
+            <p className="font-body text-blue-400/50 text-xs uppercase tracking-[0.35em] mb-4 font-light">Наши работы</p>
+            <h2 className="font-display text-4xl md:text-5xl font-light text-white tracking-tight">Примеры картин</h2>
           </div>
         </FadeSection>
 
@@ -533,9 +516,8 @@ export default function Index() {
       <section id="how" className="relative z-10 px-6 md:px-12 py-24">
         <FadeSection>
           <div className="text-center mb-16">
-            <p className="font-body text-blue-400/60 text-xs uppercase tracking-[0.3em] mb-4">Процесс</p>
-            <h2 className="font-display text-5xl md:text-6xl font-light text-white">Как это работает</h2>
-            <div className="section-divider mt-6" />
+            <p className="font-body text-blue-400/50 text-xs uppercase tracking-[0.35em] mb-4 font-light">Процесс</p>
+            <h2 className="font-display text-4xl md:text-5xl font-light text-white tracking-tight">Как это работает</h2>
           </div>
         </FadeSection>
 
@@ -555,45 +537,15 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Reviews */}
-      <section className="relative z-10 px-6 md:px-12 py-24">
-        <FadeSection>
-          <div className="text-center mb-16">
-            <p className="font-body text-blue-400/60 text-xs uppercase tracking-[0.3em] mb-4">Отзывы</p>
-            <h2 className="font-display text-5xl md:text-6xl font-light text-white">Что говорят клиенты</h2>
-            <div className="section-divider mt-6" />
-          </div>
-        </FadeSection>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {REVIEWS.map((r, i) => (
-            <FadeSection key={r.name} delay={i * 120}>
-              <div className="glass rounded-2xl p-8 h-full flex flex-col">
-                <div className="flex gap-1 mb-5">
-                  {Array(r.rating).fill(0).map((_, j) => (
-                    <span key={j} className="text-blue-400 text-sm">★</span>
-                  ))}
-                </div>
-                <p className="font-body text-slate-300 text-sm leading-relaxed flex-1 mb-6">"{r.text}"</p>
-                <div>
-                  <p className="font-display text-white text-lg">{r.name}</p>
-                  <p className="font-body text-slate-500 text-xs">{r.city}</p>
-                </div>
-              </div>
-            </FadeSection>
-          ))}
-        </div>
-      </section>
-
       {/* CTA Banner */}
       <section className="relative z-10 px-6 md:px-12 py-16">
         <FadeSection>
-          <div className="max-w-3xl mx-auto glass rounded-3xl p-12 text-center" style={{ borderColor: 'rgba(59,130,246,0.15)' }}>
-            <h2 className="font-display text-4xl md:text-5xl font-light text-white mb-4">
-              Готов создать свою<br /><span className="text-violet-glow italic">картину-легенду?</span>
+          <div className="max-w-2xl mx-auto text-center py-8 border-t border-b border-white/5">
+            <h2 className="font-display text-3xl md:text-4xl font-light text-white mb-4 tracking-tight">
+              Каждый забег — это история.<br /><span className="text-violet-glow italic font-light">Пусть твоя останется навсегда.</span>
             </h2>
-            <p className="font-body text-slate-400 mb-8 text-base">Каждый забег — это история. Пусть твоя останется навсегда.</p>
-            <button onClick={startJourney} className="btn-neon px-12 py-4 rounded-full font-body text-base tracking-wide">
+            <p className="font-body text-slate-500 mb-8 text-sm font-light">Получи персональную картину с 3D-маршрутом</p>
+            <button onClick={startJourney} className="btn-neon px-10 py-3.5 rounded-sm font-body text-sm tracking-widest uppercase">
               Создать картину
             </button>
           </div>
@@ -604,9 +556,8 @@ export default function Index() {
       <section className="relative z-10 px-6 md:px-12 py-24">
         <FadeSection>
           <div className="text-center mb-16">
-            <p className="font-body text-blue-400/60 text-xs uppercase tracking-[0.3em] mb-4">Вопросы</p>
-            <h2 className="font-display text-5xl md:text-6xl font-light text-white">Частые вопросы</h2>
-            <div className="section-divider mt-6" />
+            <p className="font-body text-blue-400/50 text-xs uppercase tracking-[0.35em] mb-4 font-light">Вопросы</p>
+            <h2 className="font-display text-4xl md:text-5xl font-light text-white tracking-tight">Частые вопросы</h2>
           </div>
         </FadeSection>
 
@@ -646,9 +597,8 @@ export default function Index() {
       <section id="contacts" className="relative z-10 px-6 md:px-12 py-24">
         <FadeSection>
           <div className="text-center mb-16">
-            <p className="font-body text-blue-400/60 text-xs uppercase tracking-[0.3em] mb-4">Связаться</p>
-            <h2 className="font-display text-5xl md:text-6xl font-light text-white">Контакты</h2>
-            <div className="section-divider mt-6" />
+            <p className="font-body text-blue-400/50 text-xs uppercase tracking-[0.35em] mb-4 font-light">Связаться</p>
+            <h2 className="font-display text-4xl md:text-5xl font-light text-white tracking-tight">Контакты</h2>
           </div>
         </FadeSection>
 
